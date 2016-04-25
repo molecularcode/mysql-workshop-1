@@ -1,0 +1,7 @@
+/* Exercise 3
+-----------------------------------------------------------------------
+Remove database named decodemtl_test from MySQL
+*/
+
+// Remove database named decodemtl_test from MySQL
+mysql> drop database decodemtl_test;s
