@@ -1,0 +1,20 @@
+/* Exercise 4
+-----------------------------------------------------------------------
+    Create table Account for database decodemtl_addressbook
+    Create table AddressBook for database decodemtl_addressbook
+    Create table Entry for database decodemtl_addressbook
+    Create table Test for database decodemtl_addressbook
+*/
+
+// Create table Account for database decodemtl_addressbook
+mysql> use decodemtl_addressbook
+mysql> CREATE TABLE Account (id INT auto_increment primary key);
+
+// Create table AddressBook for database decodemtl_addressbook
+mysql> CREATE TABLE AddressBook (id INT auto_increment primary key);
+
+// Create table Entry for database decodemtl_addressbook
+mysql> CREATE TABLE Entry (id INT auto_increment primary key);
+
+// Create table Test for database decodemtl_addressbook
+mysql> CREATE TABLE Test (id INT auto_increment primary key);
