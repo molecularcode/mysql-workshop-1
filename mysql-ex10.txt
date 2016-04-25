@@ -12,28 +12,89 @@ This model should provide answers to the following questions:
 
 */
 
-// Hotel DataBase
+// Hotel DataBase - Data Model:
 
 Room table
 -------------
-roomId INT
+id INT auto_increment primary key
 occupancy INT(3)
 rentable BOOLEAN
 kitchen BOOLEAN
 windows SMALLINT
 carpeted BOOLEAN
 floorId INT
+FOREIGN KEY (floorId) REFERENCES Floor(floorId)
+
+mysql> describe Room;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | int(11)     | NO   | PRI | NULL    | auto_increment |
+| occupancy | int(3)      | YES  |     | NULL    |                |
+| rentable  | tinyint(1)  | YES  |     | NULL    |                |
+| kitchen   | tinyint(1)  | YES  |     | NULL    |                |
+| windows   | smallint(6) | YES  |     | NULL    |                |
+| carpeted  | tinyint(1)  | YES  |     | NULL    |                |
+| floorId   | int(11)     | YES  | MUL | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
 
 
 Floor table
 -------------
-floorId INT
+floorId INT auto_increment primary key
 name VARCHAR(50)
+
+mysql> describe Floor;
++---------+-------------+------+-----+---------+----------------+
+| Field   | Type        | Null | Key | Default | Extra          |
++---------+-------------+------+-----+---------+----------------+
+| floorId | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name    | varchar(50) | YES  |     | NULL    |                |
++---------+-------------+------+-----+---------+----------------+
 
 
 Rented table
 -------------
+rentedId INT auto_increment primary key
 id INT
-roomId INT
 rentStart DATETIME
 rentEnd DATETIME
+FOREIGN KEY (id) REFERENCES Room(id)
+
+mysql> describe Rented;
++-----------+----------+------+-----+---------+----------------+
+| Field     | Type     | Null | Key | Default | Extra          |
++-----------+----------+------+-----+---------+----------------+
+| rentedId  | int(11)  | NO   | PRI | NULL    | auto_increment |
+| id        | int(11)  | YES  | MUL | NULL    |                |
+| rentStart | datetime | YES  |     | NULL    |                |
+| rentEnd   | datetime | YES  |     | NULL    |                |
++-----------+----------+------+-----+---------+----------------+
+
+
+MySQL commands:
+mysql> create database hotel
+
+mysql> use hotel
+
+mysql> create table Room
+    -> (id INT auto_increment primary key,
+    -> occupancy int(3),
+    -> rentable boolean,
+    -> kitchen boolean,
+    -> windows smallint,
+    -> carpeted boolean,
+    -> floorId INT);
+    
+mysql> create table Floor (floorId INT auto_increment primary key);   
+
+mysql> alter table Room add FOREIGN KEY (floorId) REFERENCES Floor(floorId);
+
+mysql> alter table Floor add name varchar(50);
+
+mysql> create table Rented 
+    -> (rentedId INT auto_increment primary key,
+    -> id INT,
+    -> rentStart DATETIME,
+    -> rentEnd DATETIME,
+    -> FOREIGN KEY (id) REFERENCES Room(id));
