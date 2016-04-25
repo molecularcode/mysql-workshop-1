@@ -1,0 +1,47 @@
+/* Exercise 8
+-----------------------------------------------------------------------
+Reflect the data model shown in schema/addressbook_denormalized.png within database decodemtl_addressbook
+
+    Account.id is a primary auto-increment key
+    AddressBook.id is a primary auto-increment key
+    Entry.id is a primary auto-increment key
+    Entry.type is an ENUM column permitting home, work and other
+    Entry.subtype is an ENUM column permitting phone, address and email
+*/
+
+// Account.id is a primary auto-increment key
+// done on table creation
+
+// AddressBook.id is a primary auto-increment key
+// done on table creation
+
+// Entry.id is a primary auto-increment key
+// done on table creation
+
+// Account table
+mysql> ALTER TABLE Account
+    -> ADD COLUMN email VARCHAR(255),
+    -> ADD COLUMN password VARCHAR(40),
+    -> ADD COLUMN createdOn DATETIME,
+    -> ADD COLUMN modifiedOn DATETIME;
+    
+// AddressBook table
+mysql> ALTER TABLE AddressBook
+    -> ADD COLUMN accountId INT,
+    -> ADD COLUMN name VARCHAR(255),
+    -> ADD COLUMN createdOn DATETIME,
+    -> ADD COLUMN modifiedOn DATETIME;
+    
+//
+mysql> ALTER TABLE Entry
+    -> ADD COLUMN addressBookId INT,
+    -> ADD COLUMN firstName VARCHAR(255),
+    -> ADD COLUMN lastName VARCHAR(255),
+    -> ADD COLUMN birthday DATETIME,
+    -> ADD COLUMN type ENUM('home', 'work', 'other'),
+    -> ADD COLUMN subtype ENUM('phone', 'address', 'email'),
+    -> ADD COLUMN contentLineOne VARCHAR(255),
+    -> ADD COLUMN contentLineTwo VARCHAR(255),
+    -> ADD COLUMN contentLineThree VARCHAR(255),
+    -> ADD COLUMN contentLineFour VARCHAR(255),
+    -> ADD COLUMN contentLineFive VARCHAR(255);
