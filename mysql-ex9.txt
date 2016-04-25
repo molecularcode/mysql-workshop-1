@@ -6,10 +6,27 @@ This model should provide answers to the following questions:
     How many chicks will come to age on a specific date
 */
 
-// Chicken table
-Chickens
---------
-id INT
+// Barn database
+Chicken table
+----------------
+id INT auto_increment primary key
 age INT(4)
 dateAdded DATETIME
 type ENUM('rooster', 'hen', 'chick')
+
+
+mysql> create table Chicken (id INT auto_increment primary key,
+    -> age INT(4),
+    -> dateAdded DATETIME,
+    -> type ENUM('rooster', 'hen', 'chick'));
+    
+
+mysql> describe Chicken;
++-----------+-------------------------------+------+-----+---------+----------------+
+| Field     | Type                          | Null | Key | Default | Extra          |
++-----------+-------------------------------+------+-----+---------+----------------+
+| id        | int(11)                       | NO   | PRI | NULL    | auto_increment |
+| age       | int(4)                        | YES  |     | NULL    |                |
+| dateAdded | datetime                      | YES  |     | NULL    |                |
+| type      | enum('rooster','hen','chick') | YES  |     | NULL    |                |
++-----------+-------------------------------+------+-----+---------+----------------+
