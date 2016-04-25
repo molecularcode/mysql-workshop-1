@@ -12,13 +12,15 @@ Chicken table
 id INT auto_increment primary key
 age INT(4)
 dateAdded DATETIME
-type ENUM('rooster', 'hen', 'chick')
+dateDied DATETIME
+type ENUM('rooster', 'hen')
 
 
 mysql> create table Chicken (id INT auto_increment primary key,
     -> age INT(4),
     -> dateAdded DATETIME,
-    -> type ENUM('rooster', 'hen', 'chick'));
+    -> dateDied DATETIME,
+    -> type ENUM('rooster', 'hen'));
     
 
 mysql> describe Chicken;
@@ -28,5 +30,6 @@ mysql> describe Chicken;
 | id        | int(11)                       | NO   | PRI | NULL    | auto_increment |
 | age       | int(4)                        | YES  |     | NULL    |                |
 | dateAdded | datetime                      | YES  |     | NULL    |                |
-| type      | enum('rooster','hen','chick') | YES  |     | NULL    |                |
+| dateDied  | datetime                      | YES  |     | NULL    |                |
+| type      | enum('rooster','hen')         | YES  |     | NULL    |                |
 +-----------+-------------------------------+------+-----+---------+----------------+
