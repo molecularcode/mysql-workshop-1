@@ -1,0 +1,7 @@
+/* Exercise 4
+-----------------------------------------------------------------------
+Return the list of databases within MySQL
+*/
+
+// Return the list of databases within MySQL
+mysql> show databases;
